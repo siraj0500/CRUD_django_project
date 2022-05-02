@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% block content %}
+    <h4 class="text-decoration-underline text-center" style="font-family: fantasy,serif">Employee Registration</h4>
+    <form name = "contact-form"  enctype="multipart/form-data" action="{% url 'index' %}" method="post" style="padding-bottom: 50px"  target="_blank">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-success" value="Submit" id="btnsubmit" onclick="submitForm()">
+    </form>
+
+    <script>
+        function submitForm() {
+           // Get the first form with the name
+           // Usually the form name is not repeated
+           // but duplicate names are possible in HTML
+           // Therefore to work around the issue, enforce the correct index
+            var frm = document.getElementsByName('contact-form')[0];
+            frm.submit(); // Submit the form
+            frm.reset();  // Reset all form data
+            return false; // Prevent page refresh
+        }
+    </script>
+{% endblock %}
+</body>
+</html>

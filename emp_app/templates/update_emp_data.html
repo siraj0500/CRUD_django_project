@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Employee Data</title>
+</head>
+<body>
+{% block content %}
+<div class="row">
+<div class="col-sm-8 offset-1">
+    <h4 class="text-decoration-underline text-center" style="font-family: fantasy,serif">Update Employee Data</h4>
+    <form action="" method="post" style="padding-bottom: 50px">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success" value="Update">
+        <a href="{% url 'empdb' %}" class="btn btn-info">Back to Home</a>
+    </form>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>
+
+
+

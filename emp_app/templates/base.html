@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="{% static 'emp_app/css/bootstrap.css' %}">
+</head>
+<body>
+<div class="container mt-5 ">
+        <h2 class="text-center alert alert-primary text-dark fw-bold" >ABC Company</h2>
+    {% block content %}
+    {% endblock %}
+</div>
+<script src="{% static 'emp_app/js/jquery.js' %}"></script>
+<script src="{% static 'emp_app/js/bootstrap.js' %}"></script>
+<script src="{% static 'emp_app/js/popper.js' %}"></script>
+</body>
+</html>

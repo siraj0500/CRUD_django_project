@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+{% block content %}
+<h4 class="text-decoration-underline text-center" style="font-family: fantasy,serif">Employee Data</h4>
+    {% if empview %}
+        <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" >ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+       <th scope="col">Phone Number</th>
+      <th scope="col">Email</th>
+        <th scope="col">Image</th>
+        <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {%for empview in empview%}
+    <tr class="table-success">
+      <th scope="row">{{ empview.id }}</th>
+      <td>{{empview.name }}</td>
+       <td>{{ empview.address }}</td>
+        <td>{{ empview.contact_number }}</td>
+       <td>{{ empview.email }}</td>
+        <td ><img src="{{ empview.pic.url }}" style="width: 50px ; height: 50px" alt=""></td>
+        <td>
+            <a href="{% url 'empupdate' empview.id %}" class="btn btn-warning">Edit</a>
+            <form action="{% url 'empdelete' empview.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </form>
+
+        </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+        {% else %}
+        <h4 class="alert alert-warning"> No Data </h4>
+    {% endif %}
+{% endblock %}
+</body>
+</html>
